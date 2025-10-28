@@ -28,5 +28,14 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("1\n5\n4")).to eq(10)
       end
     end
+
+    context 'when input starts with // and contains a delimiter' do
+      it 'returns the sum of the numbers' do
+        expect(StringCalculator.add("//;\n1;2")).to eq(3)
+        expect(StringCalculator.add("//|\n4|3|6")).to eq(13)
+        expect(StringCalculator.add("1\n5\n4")).to eq(10)
+        expect(StringCalculator.add("1,2\n3")).to eq(6)
+      end
+    end
   end
 end
