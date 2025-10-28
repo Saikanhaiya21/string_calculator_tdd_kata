@@ -9,6 +9,14 @@ class StringCalculator
     end
     
     regex = Regexp.union(delimiters)
-    numbers.split(regex).map(&:to_i).sum
+    numbers = numbers.split(regex).map(&:to_i)
+    
+    negative_numbers = numbers.select {|num| num.negative? }
+
+    if negative_numbers.any?
+      raise "negative numbers not allowed: #{negative_numbers.join(', ')}"
+    end
+
+    numbers.sum
   end
 end
