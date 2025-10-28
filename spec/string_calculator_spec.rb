@@ -21,5 +21,12 @@ RSpec.describe StringCalculator do
         expect(StringCalculator.add("1,0")).to eq(1)
       end
     end
+
+    context 'when input contains multiple numbers with newlines' do
+      it 'returns the sum of the numbers' do
+        expect(StringCalculator.add("1\n2,3")).to eq(6)
+        expect(StringCalculator.add("1\n5\n4")).to eq(10)
+      end
+    end
   end
 end
